@@ -6,130 +6,174 @@ class PresensiScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: const Color(0xFFF6F6F8),
       body: SafeArea(
         child: Column(
           children: [
+            // ================= HEADER PRESENSI WAJAH =================
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xFF8E7AB5), Color(0xFF6B5B8C)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
+                  colors: [
+                    Color(0xFF493568),
+                    Color(0xFF7B7EB0),
+                  ],
                 ),
               ),
-              child: Stack(
-                alignment: Alignment.center,
+              child: const Row(
                 children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: InkWell(
-                      onTap: () => Navigator.pop(context),
-                      child: const Icon(Icons.arrow_back_ios,
-                          color: Colors.white, size: 20),
-                    ),
-                  ),
-                  const Text(
+                  Icon(Icons.arrow_back_ios, color: Colors.white, size: 18),
+                  SizedBox(width: 12),
+                  Text(
                     'Presensi Wajah',
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
             ),
+
+            // ================= KONTEN UTAMA (DITENGAHKAN) =================
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: 300,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        border:
-                            Border.all(color: Colors.purple.shade200, width: 2),
-                        image: const DecorationImage(
-                          image: AssetImage('assets/columbina.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Foto wajah akan tampil di sini',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: OutlinedButton(
-                            onPressed: () {},
-                            style: OutlinedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                              side: const BorderSide(color: Color(0xFF6B5B8C)),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                            child: const Text(
-                              'Ambil Ulang',
-                              style: TextStyle(
-                                color: Color(0xFF6B5B8C),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
-                            ),
+              child: Center(
+                child: SingleChildScrollView(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Kotak Ungu Melengkung Persis di Canva (Di Tengah)
+                      Container(
+                        width: double.infinity,
+                        constraints: const BoxConstraints(
+                            maxWidth:
+                                340), // Batasi lebar agar rapi di layar besar/PC
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 24, horizontal: 16),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xFF493568),
+                              Color(0xFF7B7EB0),
+                            ],
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF6B5B8C),
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
+                          borderRadius: BorderRadius.circular(24),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 8,
+                              offset: Offset(0, 4),
                             ),
-                            child: const Text(
-                              'Gunakan Foto',
-                              style: TextStyle(
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            // Kotak Foto Vertikal/Portrait di Tengah
+                            Container(
+                              width: 220,
+                              height: 280,
+                              decoration: BoxDecoration(
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                                borderRadius: BorderRadius.circular(20),
+                                border:
+                                    Border.all(color: Colors.white, width: 3),
+                                image: const DecorationImage(
+                                  image: AssetImage('assets/presensi.png'),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
+                            const SizedBox(height: 14),
+                            const Text(
+                              'Foto wajah akan tampil di sini',
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 12,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+
+                            // Tombol Ambil Ulang & Gunakan Foto (Rapi di Tengah)
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.black87,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 18,
+                                      vertical: 11,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    elevation: 0,
+                                  ),
+                                  child: const Text(
+                                    'Ambil Ulang',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFF493568),
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 18,
+                                      vertical: 11,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: const BorderSide(
+                                          color: Colors.white, width: 1),
+                                    ),
+                                    elevation: 0,
+                                  ),
+                                  child: const Text(
+                                    'Gunakan Foto',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    const Text(
-                      'Pastikan wajah terlihat jelas dan tidak menggunakan\nmasker/topeng',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.grey,
-                        height: 1.4,
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 20),
+
+                      // Teks Catatan Bawah
+                      const Text(
+                        'Pastikan wajah terlihat jelas dan tidak menggunakan masker/topeng',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

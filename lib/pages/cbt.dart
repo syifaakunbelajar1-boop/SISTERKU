@@ -12,7 +12,7 @@ class CbtScreen extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 24),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Color(0xFF8E7AB5), Color(0xFF6B5B8C)],
@@ -20,15 +20,15 @@ class CbtScreen extends StatelessWidget {
                   end: Alignment.bottomCenter,
                 ),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
+                  bottomLeft: Radius.circular(28),
+                  bottomRight: Radius.circular(28),
                 ),
               ),
               child: const Center(
                 child: Text(
                   'CBT',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -42,8 +42,8 @@ class CbtScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 140,
-                      height: 140,
+                      width: 160,
+                      height: 160,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
@@ -64,15 +64,15 @@ class CbtScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Container(
-                          width: 90,
-                          height: 90,
+                          width: 100,
+                          height: 100,
                           decoration: BoxDecoration(
                             color: const Color(0xFFE893B8),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(22),
                           ),
                           child: const Icon(
                             Icons.calculate_outlined,
-                            size: 50,
+                            size: 55,
                             color: Colors.white,
                           ),
                         ),
@@ -82,17 +82,17 @@ class CbtScreen extends StatelessWidget {
                     const Text(
                       'CBT Akan Segera Hadir!',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: Colors.black87,
                       ),
                     ),
                     const SizedBox(height: 12),
                     const Text(
-                      'Fitur CBT sedang Disiapkan. Tunggu\nsebentar, ya!',
+                      'Fitur CBT sedang disiapkan. Tunggu\nsebentar, ya!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 14,
                         color: Colors.grey,
                         height: 1.4,
                       ),

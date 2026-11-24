@@ -6,160 +6,200 @@ class LmsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Color(0xFF8E7AB5), Color(0xFF6B5B8C)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(24),
-                    bottomRight: Radius.circular(24),
-                  ),
+      backgroundColor: const Color(0xFFF6F6F8),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // ================= HEADER UNGU (BERHENTI DI NAMA SEKOLAH) =================
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.only(
+                top: 48,
+                left: 20,
+                right: 20,
+                bottom: 22,
+              ),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFF493568),
+                    Color(0xFF7B7EB0),
+                  ],
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 56,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 1.5),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/pp.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 14),
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 45,
-                          height: 45,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.white, width: 2),
-                            image: const DecorationImage(
-                              image: AssetImage('assets/columbina.png'),
-                              fit: BoxFit.cover,
-                            ),
+                        Text(
+                          'Pembelajaran',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(width: 12),
-                        const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Pembelajaran',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(height: 2),
-                            Text(
-                              "SMA Saint Peter's School · Cambridge International",
-                              style: TextStyle(
-                                  fontSize: 10, color: Colors.white70),
-                            ),
-                          ],
+                        SizedBox(height: 2),
+                        Text(
+                          'SMA Saint Peter\'s School · Cambridge International',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 11,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const TextField(
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.search, color: Colors.grey),
-                          hintText: 'Cari mata pelajaran...',
-                          hintStyle:
-                              TextStyle(fontSize: 13, color: Colors.grey),
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 14, horizontal: 8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.05),
-                            blurRadius: 6,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          _StatItem(count: '4', label: 'Mata Pelajaran'),
-                          _StatDivider(),
-                          _StatItem(count: '0', label: 'Materi'),
-                          _StatDivider(),
-                          _StatItem(count: '0', label: 'Tugas Aktif'),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Mata Pelajaran',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+
+            // ================= KONTEN UTAMA =================
+            Padding(
+              padding: const EdgeInsets.all(18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Kotak Pencarian (Search Bar)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: Colors.black54, width: 1),
                     ),
-                    const SizedBox(height: 12),
-                    _buildSubjectCard(
-                      code: 'MP',
-                      title: 'MIPA',
-                      teacher: 'Yohanes Mario D.B, S.Pd.',
-                      materiCount: '0 Materi',
-                      tugasCount: '0 Tugas',
+                    child: const TextField(
+                      decoration: InputDecoration(
+                        icon:
+                            Icon(Icons.search, color: Colors.black54, size: 20),
+                        hintText: 'Cari mata pelajaran...',
+                        hintStyle:
+                            TextStyle(color: Colors.black45, fontSize: 13),
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(vertical: 12),
+                      ),
                     ),
-                    const SizedBox(height: 12),
-                    _buildSubjectCard(
-                      code: 'PS',
-                      title: 'IPS',
-                      teacher: 'Rosita Sitorus, S.E.',
-                      materiCount: '0 Materi',
-                      tugasCount: '0 Tugas',
+                  ),
+                  const SizedBox(height: 14),
+
+                  // Kotak Statistik
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(color: Colors.black54, width: 1),
                     ),
-                    const SizedBox(height: 12),
-                    _buildSubjectCard(
-                      code: 'BM',
-                      title: 'Bahasa Mandarin',
-                      teacher: 'Balsamus Pieter D, S.Fil.',
-                      materiCount: '0 Materi',
-                      tugasCount: '0 Tugas',
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _buildStatItem('4', 'Mata Pelajaran'),
+                        Container(height: 28, width: 1, color: Colors.black26),
+                        _buildStatItem('0', 'Materi'),
+                        Container(height: 28, width: 1, color: Colors.black26),
+                        _buildStatItem('0', 'Tugas Aktif'),
+                      ],
                     ),
-                    const SizedBox(height: 12),
-                    _buildSubjectCard(
-                      code: 'BJ',
-                      title: 'Bahasa Jerman',
-                      teacher: 'Rina Rustiyawati, S.T.',
-                      materiCount: '0 Materi',
-                      tugasCount: '0 Tugas',
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  // Judul Mata Pelajaran
+                  const Text(
+                    'Mata Pelajaran',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Kartu Mata Pelajaran (Background Putih, Kotak Inisial Ungu #E7DDF5 dengan Border #9575CD)
+                  _buildSubjectCard(
+                    code: 'MP',
+                    title: 'MIPA',
+                    teacher: 'Yohanes Mario D.B, S.Pd.',
+                    materialCount: '0 Materi',
+                    taskCount: '0 Tugas',
+                  ),
+                  const SizedBox(height: 12),
+
+                  _buildSubjectCard(
+                    code: 'PS',
+                    title: 'IPS',
+                    teacher: 'Rosita Sitorus, S.E.',
+                    materialCount: '0 Materi',
+                    taskCount: '0 Tugas',
+                  ),
+                  const SizedBox(height: 12),
+
+                  _buildSubjectCard(
+                    code: 'BM',
+                    title: 'Bahasa Mandarin',
+                    teacher: 'Balsamus Pieter D, S.Fil.',
+                    materialCount: '0 Materi',
+                    taskCount: '0 Tugas',
+                  ),
+                  const SizedBox(height: 12),
+
+                  _buildSubjectCard(
+                    code: 'BJ',
+                    title: 'Bahasa Jerman',
+                    teacher: 'Rina Rustiyawati, S.T.',
+                    materialCount: '0 Materi',
+                    taskCount: '0 Tugas',
+                  ),
+                  const SizedBox(height: 20),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  Widget _buildStatItem(String count, String label) {
+    return Column(
+      children: [
+        Text(
+          count,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          label,
+          style: const TextStyle(
+            color: Colors.black54,
+            fontSize: 11,
+          ),
+        ),
+      ],
     );
   }
 
@@ -167,43 +207,40 @@ class LmsScreen extends StatelessWidget {
     required String code,
     required String title,
     required String teacher,
-    required String materiCount,
-    required String tugasCount,
+    required String materialCount,
+    required String taskCount,
   }) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.08),
-            blurRadius: 6,
-            offset: const Offset(0, 3),
-          ),
-        ],
+        color: Colors.white, // Kartu utama warna putih bersih
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+            color: Colors.black54, width: 1), // Bingkai garis hitam tipis
       ),
       child: Row(
         children: [
+          // Kotak Inisial Mapel (Background #E7DDF5, Border #9575CD)
           Container(
-            width: 45,
-            height: 45,
+            width: 48,
+            height: 48,
             decoration: BoxDecoration(
-              color: const Color(0xFFE8E2F3),
-              borderRadius: BorderRadius.circular(8),
+              color: const Color(0xFFE7DDF5),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: const Color(0xFF9575CD), width: 1.2),
             ),
-            child: Center(
-              child: Text(
-                code,
-                style: const TextStyle(
-                  color: Color(0xFF6B5B8C),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                ),
+            alignment: Alignment.center,
+            child: Text(
+              code,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color(0xFF493568),
               ),
             ),
           ),
-          const SizedBox(width: 15),
+          const SizedBox(width: 14),
+          // Info Mata Pelajaran & Guru
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,29 +248,43 @@ class LmsScreen extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 14),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: Colors.black87,
+                  ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   teacher,
-                  style: const TextStyle(color: Colors.grey, fontSize: 12),
+                  style: const TextStyle(
+                    color: Colors.black54,
+                    fontSize: 11,
+                  ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 6),
                 Row(
                   children: [
-                    const Icon(Icons.insert_drive_file_outlined,
-                        size: 14, color: Colors.grey),
-                    const SizedBox(width: 4),
-                    Text(materiCount,
-                        style:
-                            const TextStyle(fontSize: 11, color: Colors.grey)),
+                    Row(
+                      children: [
+                        const Icon(Icons.book_outlined,
+                            size: 12, color: Colors.black54),
+                        const SizedBox(width: 4),
+                        Text(materialCount,
+                            style: const TextStyle(
+                                color: Colors.black54, fontSize: 10)),
+                      ],
+                    ),
                     const SizedBox(width: 16),
-                    const Icon(Icons.assignment_outlined,
-                        size: 14, color: Colors.grey),
-                    const SizedBox(width: 4),
-                    Text(tugasCount,
-                        style:
-                            const TextStyle(fontSize: 11, color: Colors.grey)),
+                    Row(
+                      children: [
+                        const Icon(Icons.assignment_outlined,
+                            size: 12, color: Colors.black54),
+                        const SizedBox(width: 4),
+                        Text(taskCount,
+                            style: const TextStyle(
+                                color: Colors.black54, fontSize: 10)),
+                      ],
+                    ),
                   ],
                 ),
               ],
@@ -241,47 +292,6 @@ class LmsScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _StatItem extends StatelessWidget {
-  final String count;
-  final String label;
-
-  const _StatItem({required this.count, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          count,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF6B5B8C),
-          ),
-        ),
-        const SizedBox(height: 2),
-        Text(
-          label,
-          style: const TextStyle(fontSize: 11, color: Colors.grey),
-        ),
-      ],
-    );
-  }
-}
-
-class _StatDivider extends StatelessWidget {
-  const _StatDivider();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 25,
-      width: 1,
-      color: Colors.grey.shade300,
     );
   }
 }

@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  permission_handler: ^13.0.2
+  location: ^10.2.0
 
 dev_dependencies:
   flutter_test:
@@ -19,8 +21,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Daftarkan nama file gambar kamu di sini (pastikan fotonya sudah dimasukkan ke folder assets)
   assets:
-  - assets/columbina.png
-  - assets/lunar_knowledge.png
-  
+    - assets/columbina.png
+    - assets/lunar_knowledge.png
+    - assets/assets/presensi.png
+    - assets/assets/ppku.png
+    - assets/assets/pp.png
